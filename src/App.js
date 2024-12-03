@@ -11,8 +11,8 @@ function App() {
     <div> 
         <Navbar dark color="primary" expand="md"> 
             <div className="container"> 
-                <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand> 
-                <div>Aluno: Fulano de Tal</div> 
+                <NavbarBrand href="/">Ristorante delicias real</NavbarBrand> 
+                <div>Aluno: Débora Rafaelle, Allyson Rodrigo </div> 
             </div> 
         </Navbar> 
         <Menu dishes={dishes} /> 

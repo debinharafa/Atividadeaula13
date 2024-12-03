@@ -1,66 +1,107 @@
-# Documentação de Componentes - Aula 10
- <h3> DIA: 26/11/2024 <h3>
-    
- <h3>ALUNA: DÉBORA RAFAELLE SALES DE ANDRADE <h3>
+# Documentação do Projeto: Ristorante Delicias Real
+
+Este projeto é um aplicativo React que exibe um menu de pratos com seus detalhes e comentários. Ele foi desenvolvido como parte de um exercício para consolidar conceitos de React, incluindo componentes, estado e Bootstrap.
 
 ---
 
-Essa aula foi bem legal! Aprendemos a mexer com componentes em React e usar o `Card` para deixar tudo mais bonito. Vou explicar cada arquivo e o que fizemos de um jeito simples.
+## **Estrutura do Projeto**
+
+O projeto é composto pelos seguintes arquivos principais:
+
+### 1. **`App.js`**
+- **Função Principal**: Controla a estrutura principal do aplicativo e gerencia os dados.
+- **Componentes Utilizados**:
+  - `Navbar`: Exibe o nome do restaurante e informações do aluno.
+  - `Menu`: Renderiza o menu com os pratos disponíveis.
+- **Estado**:
+  - `dishes`: Gerencia a lista de pratos importada do arquivo `dishes.js`.
 
 ---
 
-##  **MenuComponent.js**
-
-Esse arquivo é onde criamos o menu. Ele mostra a lista de pratos e o detalhe de cada um. O que usamos aqui:
-
-- **Imports:**  
-  Usamos coisas como `Card`, `CardImg`, `CardBody` (do `reactstrap`) para criar os cartões bonitos.
-
-- **Componentes:**  
-  - `Menu` é o componente principal que mostra os pratos.  
-  - O método `onDishSelect` serve para guardar o prato que foi clicado.  
-  - O `renderDish` mostra os detalhes do prato escolhido (imagem, descrição, etc.).
-
-- **Curiosidade:**  
-  Usamos `props.dishes.map` para transformar a lista de pratos (`dishes`) em cartões na tela.
+### 2. **`MenuComponent.js`**
+- **Função Principal**: Exibe uma lista de pratos disponíveis e permite selecionar um prato para exibir seus detalhes.
+- **Estado**:
+  - `selectedDish`: Gerencia o prato atualmente selecionado.
+- **Componentes Utilizados**:
+  - `DishDetail`: Exibe os detalhes do prato selecionado.
+- **Estilização**:
+  - Utiliza classes do Bootstrap para responsividade (`col-12`, `col-md-5`, `m-1`).
 
 ---
 
-##  **dishes.js**
-
-Esse arquivo tem os dados dos pratos, como se fosse o "cardápio". Aqui está o que tem:
-
-- **Propriedades:**  
-  Cada prato tem `id`, `name`, `image`, `category`, `label`, `price`, `description` e até **comentários** (uau!).
-
-- **Tipo de dado:**  
-  A data nos comentários segue o formato ISO, tipo `2012-10-16T17:57:28.556094Z`.
-
----
-
-##  **App.js**
-
-Esse é o coração do projeto, onde tudo se conecta. O que fizemos aqui:
-
-- **`const [dishes]`:**  
-  Criamos uma variável para guardar os pratos do arquivo `dishes.js`. Ela não muda, então usamos o `useState`.
-
-- **Como funciona:**  
-  O `<Menu dishes={dishes} />` passa a lista de pratos como "ingrediente" (props) para o componente `Menu`.
+### 3. **`DishdetailComponent.js`**
+- **Função Principal**: Renderiza os detalhes do prato selecionado e sua lista de comentários.
+- **Funções**:
+  - `renderDish`: Renderiza os detalhes do prato em um `Card`.
+  - `renderComments`: Exibe os comentários do prato em uma lista não estilizada.
+- **Comportamento**:
+  - Se o prato for `null`, retorna um elemento vazio.
+- **Estilização**:
+  - Usa componentes do Reactstrap (`Card`, `CardImg`, `CardBody`, `CardTitle`, `CardText`).
+  - Responsividade garantida com classes do Bootstrap.
 
 ---
 
-##  **O que mudou hoje?**
-
-1. Adicionamos cartões para exibir os pratos de um jeito mais chique.
-2. Agora dá para clicar em um prato e ver os detalhes dele.
-3. Atualizamos o README para explicar essas mudanças.
+### 4. **`dishes.js`**
+- **Função Principal**: Contém os dados dos pratos e seus comentários.
+- **Estrutura**:
+  Cada prato é representado por um objeto com as seguintes propriedades:
+  - `id`: Identificador único do prato.
+  - `name`: Nome do prato.
+  - `image`: Caminho para a imagem do prato.
+  - `category`, `label`, `price`: Informações adicionais.
+  - `description`: Descrição detalhada do prato.
+  - `comments`: Lista de comentários associados ao prato, incluindo:
+    - `id`: Identificador único do comentário.
+    - `comment`: Texto do comentário.
+    - `author`: Autor do comentário.
+    - `date`: Data do comentário.
 
 ---
 
-##  **Minha parte favorita**
+## **Requisitos Implementados**
 
-Trabalhar com comida me dá fome, mas foi divertido usar o `Card` para mostrar os pratos. Também gostei de brincar com o código e ver como tudo funciona. 
+### Tarefa 1: Adicionar o `DishdetailComponent`
+- Substituímos o cartão no `MenuComponent` pelo novo componente `DishdetailComponent`.
+- Passamos as informações do prato selecionado como `props` para o `DishDetail`.
+- Configuramos a responsividade com classes do Bootstrap.
+
+### Tarefa 2: Detalhes do Prato
+- Criamos a função `renderDish` para exibir os detalhes do prato selecionado.
+- Utilizamos o componente `Card` do Reactstrap para estilizar a exibição.
+
+### Tarefa 3: Lista de Comentários
+- Criamos a função `renderComments` para renderizar os comentários em uma lista não estilizada.
+- Incluímos o nome do autor e a data formatada de cada comentário.
 
 ---
-![sla](ativ2.png)
+
+## **Como Rodar o Projeto**
+
+### Pré-requisitos:
+- Node.js e npm instalados.
+
+### Passos:
+1. Clone o repositório:
+   ```bash
+   git clone <URL_DO_REPOSITORIO>
+Instale as dependências:
+bash
+
+npm install
+Inicie o servidor de desenvolvimento:
+
+
+npm start
+Acesse o aplicativo em http://localhost:3000.
+--
+Melhorias Futuras:
+---
+Implementar rotas para separar melhor as visualizações do menu e dos detalhes.
+Adicionar mais funcionalidades, como um formulário para novos comentários.
+Melhorar a estilização com temas personalizados do Bootstrap.
+Autor
+ 
+* ### Nome: Fulano de Tal
+* ### Exercício: UC13 - Aula 13
+* ### Data de Conclusão: 02/12/2024
